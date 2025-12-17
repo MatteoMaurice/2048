@@ -153,5 +153,44 @@ window.addEventListener("keydown", (e) => {
   else if (e.key === "ArrowDown") doMove("D");
   else if (e.key.toLowerCase() === "r") init();
 });
+// --- Mobile swipe support (touch) ---
+let touchStartX = 0;
+let touchStartY = 0;
+let touchActive = false;
+
+function onTouchStart(e) {
+  if (!e.touches || e.touches.length !== 1) return;
+  touchActive = true;
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+}
+
+function onTouchEnd(e) {
+  if (!touchActive) return;
+  touchActive = false;
+
+  const t = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0] : null;
+  if (!t) return;
+
+  const dx = t.clientX - touchStartX;
+  const dy = t.clientY - touchStartY;
+
+  const absX = Math.abs(dx);
+  const absY = Math.abs(dy);
+
+  const threshold = 30;
+  if (absX < threshold && absY < threshold) return;
+
+  if (absX > absY) {
+    if (dx > 0) doMove("R");
+    else doMove("L");
+  } else {
+    if (dy > 0) doMove("D");
+    else doMove("U");
+  }
+}
+
+boardEl.addEventListener("touchstart", onTouchStart, { passive: true });
+boardEl.addEventListener("touchend", onTouchEnd, { passive: true });
 
 init();

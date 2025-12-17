@@ -1,6 +1,6 @@
 :root{
   --bg:#0f1220; --panel:#151a2d; --tile:#222a46; --text:#e9ecff;
-  --gap:10px; --size:90px;
+  --gap:10px; --size: min(20vw, 90px);
 }
 *{box-sizing:border-box}
 body{
@@ -28,7 +28,7 @@ h1{margin:0; font-size:34px; letter-spacing:0.5px}
   display:grid;
   grid-template-columns:repeat(4,var(--size));
   grid-template-rows:repeat(4,var(--size));
-  gap:var(--gap);
+  gap:var(--gap);touch-action: none;
 }
 .cell{
   display:grid; place-items:center;
