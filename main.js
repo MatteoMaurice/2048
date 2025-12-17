@@ -165,6 +165,12 @@ function onTouchStart(e) {
   touchStartY = e.touches[0].clientY;
 }
 
+function onTouchMove(e) {
+  // Stop Safari from scrolling / pull-to-refresh while swiping on the board
+  if (!touchActive) return;
+  e.preventDefault();
+}
+
 function onTouchEnd(e) {
   if (!touchActive) return;
   touchActive = false;
@@ -191,6 +197,8 @@ function onTouchEnd(e) {
 }
 
 boardEl.addEventListener("touchstart", onTouchStart, { passive: true });
+boardEl.addEventListener("touchmove", onTouchMove, { passive: false });
 boardEl.addEventListener("touchend", onTouchEnd, { passive: true });
+boardEl.addEventListener("touchcancel", () => { touchActive = false; }, { passive: true });
 
 init();
