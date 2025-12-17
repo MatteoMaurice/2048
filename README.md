@@ -33,13 +33,13 @@ No frameworks. No libraries. Just the fundamentals.
 ---
 
 ## 📂 Project Structure
-
+```bash
 2048/
 ├── index.html # Main HTML file
 ├── style.css # Styling
 ├── main.js # Game logic
 └── README.md
-
+```
 
 ---
 
@@ -63,7 +63,7 @@ This project is a starting point and can easily be extended with:
 git clone https://github.com/YOUR_USERNAME/2048.git
 cd 2048
 open index.html
-
+```
 Or simply use Live Server in VS Code.
 
 👤 Author
