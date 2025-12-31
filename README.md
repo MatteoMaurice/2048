@@ -60,7 +60,7 @@ This project is a starting point and can easily be extended with:
 
 ## ▶️ Run Locally
 ```bash
-git clone https://github.com/YOUR_USERNAME/2048.git
+git clone https://github.com/MatteoMaurice/2048
 cd 2048
 open index.html
 ```
